@@ -9,6 +9,7 @@ import {
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import AppFormImagePicker from "../components/forms/AppFormImagePicker";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -44,6 +45,8 @@ const categories = [
 ];
 
 export default function ListingEditScreen() {
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
       <AppForm
