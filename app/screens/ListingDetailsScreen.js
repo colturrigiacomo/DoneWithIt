@@ -4,10 +4,10 @@ import ListItem from "../components/list/ListItem";
 import colors from "../config/colors";
 
 function ListingDetailsScreen({ route }) {
-  const { image, title, price } = route.params;
+  const { images, title, price } = route.params;
   return (
     <View>
-      <Image style={styles.image} source={image} />
+      <Image style={styles.image} source={{ uri: images[0].url }} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{title}</AppText>
         <AppText style={styles.price}>${price}</AppText>
