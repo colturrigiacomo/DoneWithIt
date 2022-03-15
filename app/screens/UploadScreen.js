@@ -1,10 +1,9 @@
 import { View, StyleSheet, Modal } from "react-native";
 import * as Progress from "react-native-progress";
-import { LottieView } from "lottie-react-native";
+import LottieView from "lottie-react-native";
 import colors from "../config/colors";
 
-function UploadScreen({ progress = 0, visible = false, onDone }) {
-  if (!visible) return null;
+function UploadScreen({ onDone, progress = 0, visible = false }) {
   return (
     <Modal visible={visible}>
       <View style={styles.container}>
@@ -18,9 +17,9 @@ function UploadScreen({ progress = 0, visible = false, onDone }) {
           <LottieView
             autoPlay
             loop={false}
-            style={styles.animation}
             onAnimationFinish={onDone}
             source={require("../assets/animation/done.json")}
+            style={styles.animation}
           />
         )}
       </View>
