@@ -6,7 +6,7 @@ function AppActivityIndicator({ visible = false }) {
     <LottieView
       autoPlay
       loop
-      source={require("../assets/animation/loader.json")}
+      source={require("../assets/animations/loader.json")}
     />
   );
 }
