@@ -18,27 +18,29 @@ function ListingsScreen({ navigation }) {
   }, []);
 
   return (
-    <Screen style={styles.screen}>
-      {getListingsApi.error && (
-        <>
-          <AppText>Couldn't retrive listings</AppText>
-          <AppButton title="Retry" onPress={() => getListingsApi.request()} />
-        </>
-      )}
+    <>
       <AppActivityIndicator visible={getListingsApi.loading} />
-      <FlatList
-        data={getListingsApi.data}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subtitle={"$" + item.price}
-            imageUri={item.images[0].url}
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-          />
+      <Screen style={styles.screen}>
+        {getListingsApi.error && (
+          <>
+            <AppText>Couldn't retrive listings</AppText>
+            <AppButton title="Retry" onPress={() => getListingsApi.request()} />
+          </>
         )}
-      />
-    </Screen>
+        <FlatList
+          data={getListingsApi.data}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <Card
+              title={item.title}
+              subtitle={"$" + item.price}
+              imageUri={item.images[0].url}
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            />
+          )}
+        />
+      </Screen>
+    </>
   );
 }
 
