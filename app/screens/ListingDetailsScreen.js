@@ -1,26 +1,30 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import AppText from "../components/AppText";
 import ListItem from "../components/list/ListItem";
 import colors from "../config/colors";
+import ContactSellerForm from "../components/forms/ContactSellerForm";
 
 function ListingDetailsScreen({ route }) {
   const { images, title, price } = route.params;
   return (
-    <View>
-      <Image style={styles.image} uri={images[0].url} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.price}>${price}</AppText>
-        <View style={styles.userContainer}>
-          <ListItem
-            image={require("../assets/mosh.jpg")}
-            title="Giacomo Colturri"
-            subTitle="5 Listings"
-          />
+    <KeyboardAvoidingView>
+      <View>
+        <Image style={styles.image} uri={images[0].url} />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title}>{title}</AppText>
+          <AppText style={styles.price}>${price}</AppText>
+          <View style={styles.userContainer}>
+            <ListItem
+              image={require("../assets/mosh.jpg")}
+              title="Giacomo Colturri"
+              subTitle="5 Listings"
+            />
+          </View>
         </View>
+        <ContactSellerForm listing={listing} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({
